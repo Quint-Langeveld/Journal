@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/submitEntry"
+        android:layout_width="354dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Submit your day"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smileyHappy" />
+
+    <ImageView
+        android:id="@+id/smileySad"
+        android:layout_width="80dp"
+        android:layout_height="82dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/submitEntry"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/smileyHappy"
+        app:srcCompat="@drawable/sad" />
+
+    <ImageView
+        android:id="@+id/smileyHappy"
+        android:layout_width="80dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="360dp"
+        app:layout_constraintEnd_toStartOf="@+id/smileySad"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/smileyNeutral"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/happy" />
+
+    <ImageView
+        android:id="@+id/smileyNeutral"
+        android:layout_width="80dp"
+        android:layout_height="82dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/submitEntry"
+        app:layout_constraintEnd_toStartOf="@+id/smileyHappy"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/surprised" />
+
+    <ImageView
+        android:id="@+id/checkNeutral"
+        android:layout_width="58dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="44dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/submitEntry"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/smileyNeutral"
+        app:srcCompat="@drawable/checked" />
+
+    <ImageView
+        android:id="@+id/checkHappy"
+        android:layout_width="58dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="44dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/submitEntry"
+        app:layout_constraintStart_toStartOf="@+id/smileyHappy"
+        app:srcCompat="@drawable/checked" />
+
+    <ImageView
+        android:id="@+id/checkSad"
+        android:layout_width="58dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/submitEntry"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="@+id/smileySad"
+        app:srcCompat="@drawable/checked" />
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Title"
+        app:layout_constraintBottom_toTopOf="@+id/story"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/story"
+        android:layout_width="311dp"
+        android:layout_height="260dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:gravity="center_vertical"
+        android:inputType="textPersonName"
+        android:text="how was your day?"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/smileyHappy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
