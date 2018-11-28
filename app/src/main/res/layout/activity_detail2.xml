@@ -14,7 +14,7 @@
         android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="@+id/story"
         app:layout_constraintTop_toBottomOf="@+id/title"
-        app:srcCompat="@drawable/happyNew" />
+        app:srcCompat="@drawable/happy_new" />
 
     <TextView
         android:id="@+id/title"
