@@ -7,14 +7,13 @@ public class JournalEntry implements Serializable {
     private String title;
     private String content;
     private String mood;
-    private int timeStamp;
+    private String timeStamp;
 
 
-    public JournalEntry(String title, String content, String mood, int timeStamp) {
+    public JournalEntry(String title, String content, String mood) {
         this.title = title;
         this.content = content;
         this.mood = mood;
-        this.timeStamp = timeStamp;
     }
 
     public int getId() {
@@ -45,7 +44,7 @@ public class JournalEntry implements Serializable {
         this.mood = mood;
     }
 
-    public int getTimeStamp() {
+    public String getTimeStamp() {
         return timeStamp;
     }
 }
