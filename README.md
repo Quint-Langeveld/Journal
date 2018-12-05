@@ -6,6 +6,6 @@ Journal is een dagboek applicatie. Je kunt een dag aanmaken. Deze dag bevat een 
 
 
 dit zijn de drie interfaces:
-![alt text]()
+![alt text](https://github.com/Quint-Langeveld/Journal/blob/master/doc/Screenshot_20181205-151953.png)
 ![alt text]()
 ![alt text]()
