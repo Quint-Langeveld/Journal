@@ -27,11 +27,11 @@ public class DetailActivity extends AppCompatActivity {
 
         ImageView smiley = findViewById(R.id.smileyy);
         String moodString = currentDay.getMood();
-        if (moodString == "happy") {
+        if (moodString.equals("happy")) {
             smiley.setImageResource(R.drawable.happy_new);
-        } else if (moodString == "sad"){
+        } else if (moodString.equals("sad")) {
             smiley.setImageResource((R.drawable.sad_new));
-        } else if (moodString == "neutral") {
+        } else if (moodString.equals("neutral")) {
             smiley.setImageResource(R.drawable.surprised_new);
         }
     }
