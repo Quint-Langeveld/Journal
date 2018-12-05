@@ -35,28 +35,28 @@ public class EntryDatabase extends SQLiteOpenHelper {
     }
 
     public Cursor selectAll() {
-        String select = "SELECT id, example_column FROM entries WHERE name = ? AND example_column = ?";
+        String select = "SELECT * FROM entries";
         Cursor cursor = this.getWritableDatabase().rawQuery(select,  null);
         return cursor;
     }
 
     public void insert(JournalEntry journalEntry) {
-        String select = "SELECT id, example_column FROM entries WHERE name = ? AND example_column = ?";
-        Cursor cursor = this.getWritableDatabase().rawQuery(select,  null);
+        SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
 
         cv.put("title",journalEntry.getTitle());
         cv.put("mood", journalEntry.getMood());
         cv.put("content", journalEntry.getContent());
-        cv.put("Timestamp", journalEntry.getTimeStamp());
 
-        String insert = "INSERT INTO entries (_id, title, mood, content, Timestamp) " +
-                            "VALUES (?, ?, ?)";
+        db.insert("entries", null, cv);
+    }
 
-//        instance.execSQL()
+    public void removeID(long id) {
+        SQLiteDatabase dB = this.getReadableDatabase();
+        String ide = String.valueOf(id);
 
-
+        dB.delete("entries", "_id=?", new String[]{ide});
     }
 
 }

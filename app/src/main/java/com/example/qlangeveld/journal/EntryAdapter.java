@@ -16,10 +16,6 @@ public class EntryAdapter extends ResourceCursorAdapter {
 
     @Override
     public void bindView(View convertView, Context context, Cursor cursor)  {
-//
-//        if (convertView == null) {
-//            convertView = LayoutInflater ???
-//        }
 
         int _Id = cursor.getInt(cursor.getColumnIndex("_id"));
         String textTitle = cursor.getString(cursor.getColumnIndex("title"));
@@ -27,13 +23,12 @@ public class EntryAdapter extends ResourceCursorAdapter {
         String moodString =  cursor.getString(cursor.getColumnIndex("mood"));
         String intDate = cursor.getString(cursor.getColumnIndex("Timestamp"));
 
-        ImageView Plaatje = convertView.findViewById(R.id.imageView);
-        if (moodString == "Happy") {
-            Plaatje.setImageResource(R.drawable.happy);
-        } else if (moodString == "Sad"){
-            Plaatje.setImageResource((R.drawable.sad));
-        } else if (moodString == "Neutral") {
-            Plaatje.setImageResource(R.drawable.surprised);
+        if (moodString.equals("happy")) {
+            ((ImageView) convertView.findViewById(R.id.plaatje)).setImageResource(R.drawable.happy);
+        } else if (moodString.equals("sad")){
+            ((ImageView) convertView.findViewById(R.id.plaatje)).setImageResource(R.drawable.sad);
+        } else if (moodString.equals("neutral")) {
+            ((ImageView) convertView.findViewById(R.id.plaatje)).setImageResource(R.drawable.surprised);
         }
 
         TextView Title = convertView.findViewById(R.id.Title);

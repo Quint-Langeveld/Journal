@@ -14,7 +14,6 @@ public class InputActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input2);
 
-        Intent intent = getIntent();
     }
 
     public void onSubmitCLicked(View view) {
@@ -42,10 +41,10 @@ public class InputActivity extends AppCompatActivity {
         }
 
         JournalEntry journalEntry = new JournalEntry(Title, Story, mood);
+        journalEntry.setMood(mood);
         EntryDatabase.getInstance(getApplicationContext()).insert(journalEntry);
 
-        Intent intent = new Intent(InputActivity.this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     public void onSmileyClicked(View view) {

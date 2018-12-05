@@ -1,7 +1,6 @@
 package com.example.qlangeveld.journal;
 
 import android.content.Intent;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -26,14 +25,14 @@ public class DetailActivity extends AppCompatActivity {
         TextView stroy = findViewById(R.id.story);
         stroy.setText(currentDay.getContent());
 
-        ImageView smiley = findViewById(R.id.smiley);
+        ImageView smiley = findViewById(R.id.smileyy);
         String moodString = currentDay.getMood();
-        if (moodString == "Happy") {
-            smiley.setImageResource(R.drawable.happy);
-        } else if (moodString == "Sad"){
-            smiley.setImageResource((R.drawable.sad));
-        } else if (moodString == "Neutral") {
-            smiley.setImageResource(R.drawable.surprised);
+        if (moodString == "happy") {
+            smiley.setImageResource(R.drawable.happy_new);
+        } else if (moodString == "sad"){
+            smiley.setImageResource((R.drawable.sad_new));
+        } else if (moodString == "neutral") {
+            smiley.setImageResource(R.drawable.surprised_new);
         }
     }
 }

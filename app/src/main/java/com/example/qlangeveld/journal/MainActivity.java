@@ -17,63 +17,60 @@ public class MainActivity extends AppCompatActivity {
 
     private EntryDatabase db;
     private EntryAdapter entryAdapter;
-    private ImageView happy;
-    private ImageView sad;
-    private ImageView neutral;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        upDateData();
+        db = EntryDatabase.getInstance(this);
+        Cursor curs = db.selectAll();
+        entryAdapter = new EntryAdapter(this, curs);
 
         ListView listView = findViewById(R.id.ListView);
         listView.setAdapter(entryAdapter);
 
         listView.setOnItemClickListener(new ListItemClickListener());
+        listView.setOnItemLongClickListener( new OnItemLongClickListener());
     }
 
     private class ListItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            TextView Titel = view.findViewById(R.id.Title);
-            String titel = Titel.getText().toString();
+            Cursor cursor = (Cursor) parent.getItemAtPosition(position);
 
-
-            TextView Context = view.findViewById(R.id.context);
-            String context = Context.getText().toString();
-
-            ImageView smiley = view.findViewById(R.id.imageView);
-
-            Drawable Happy = getDrawable(R.drawable.happy);
-            happy.setImageDrawable(Happy);
-
-            Drawable Sad = getDrawable(R.drawable.sad);
-            sad.setImageDrawable(Sad);
-
-            Drawable Neutral = getDrawable(R.drawable.surprised);
-            neutral.setImageDrawable(Neutral);
-
-            String mood;
-            if (smiley.getResources() == happy.getResources()) {
-                mood = "happy";
-            } else if (smiley.getResources() == sad.getResources()) {
-                mood = "sad";
-            } else if (smiley.getResources() == neutral.getResources()) {
-                mood = "neutral";
-            } else {
-                mood = "mood";
-            }
+            String titel = cursor.getString(cursor.getColumnIndex("title"));
+            String context = cursor.getString(cursor.getColumnIndex("content"));
+            String mood =  cursor.getString(cursor.getColumnIndex("mood"));
+            String date = cursor.getString(cursor.getColumnIndex("Timestamp"));
 
             JournalEntry clickedDay = new JournalEntry(titel, context, mood);
+            clickedDay.setTimeStamp(date);
 
             Intent intent = new Intent(MainActivity.this, DetailActivity.class);
             intent.putExtra("clicked_day", clickedDay);
             startActivity(intent);
         }
+    }
+
+    private class OnItemLongClickListener implements AdapterView.OnItemLongClickListener {
+        @Override
+        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            Cursor cursor = (Cursor) parent.getItemAtPosition(position);
+            long _id = cursor.getInt(cursor.getColumnIndex("_id"));
+
+            db.removeID(_id);
+            upDateData();
+
+            return true;
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        upDateData();
     }
 
     public void onFloatingButtonClicked(View view) {

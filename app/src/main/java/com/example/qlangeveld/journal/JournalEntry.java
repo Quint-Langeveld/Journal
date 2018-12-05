@@ -44,6 +44,10 @@ public class JournalEntry implements Serializable {
         this.mood = mood;
     }
 
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
     public String getTimeStamp() {
         return timeStamp;
     }
